@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component,ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { Chart } from 'chart.js';
 
 import { SensorService } from '../../shared/sensor.service';
 import { Sensor } from '../../shared/sensor.model';
@@ -28,5 +29,4 @@ export class AboutPage {
     this.sensors = [];
     this.showResetBtn = false;
   }
-
 }
