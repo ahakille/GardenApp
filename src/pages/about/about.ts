@@ -12,14 +12,21 @@ import { Measure } from '../../shared/measue.model';
 export class AboutPage {
 
   sensors: Sensor[] = [];
-
+  showResetBtn = false;
+  
   constructor(public navCtrl: NavController, private sensorService: SensorService) { }
 
   getSensors() {
     this.sensorService.getSensors()
-      .subscribe(sensors => {
-        this.sensors = sensors;
-      });
+      .subscribe(res => {
+        this.sensors = res;
+        this.showResetBtn = true;
+      });     
+  }
+
+  hideSensors() {
+    this.sensors = [];
+    this.showResetBtn = false;
   }
 
 }

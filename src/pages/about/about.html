@@ -7,5 +7,17 @@
 </ion-header>
 
 <ion-content padding>
-
+  <div *ngIf="!showResetBtn">
+      <button ion-button color="light" round full (click)="getSensors()">Visa sensorer</button>
+  </div>
+  
+  <ion-list>
+    <div *ngFor="let sensor of sensors">
+    <ion-item>{{sensor.sensorName}}</ion-item>    
+  </div>    
+  
+  </ion-list>
+  <div *ngIf="showResetBtn">
+    <button ion-button color="light" round full (click)="hideSensors()">Dölj sensorer</button>
+  </div>  
 </ion-content>
