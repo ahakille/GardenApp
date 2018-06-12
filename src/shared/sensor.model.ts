@@ -1,4 +1,4 @@
 export interface Sensor {
-    id : number;
-    name: string;
+    sensorId : number;
+    sensorName: string;
 }
