@@ -8,13 +8,19 @@
 
 <ion-content padding>
   <div *ngIf="!showResetBtn">
-      <button ion-button color="light" round full (click)="getSensors()">Visa sensorer</button>
+      <button ion-button color="light" round full (click)="getSensors()">Visa sensorer</button>      
   </div>
   
-  <ion-list>
-    <div *ngFor="let sensor of sensors">
-    <ion-item>{{sensor.sensorName}}</ion-item>    
-  </div>    
+  <ion-list>    
+      <button ion-item *ngFor="let sensor of sensors" (click)="getMeasure(sensor)">
+        {{ sensor.sensorName }}
+      </button>
+      <ion-list>
+        <div *ngFor="let measue of measures">
+          <ion-item>{{measue.timeStamp}}</ion-item>
+          <ion-item>{{measue.sensorData}}</ion-item>                   
+        </div> 
+      </ion-list>         
   
   </ion-list>
   <div *ngIf="showResetBtn">
