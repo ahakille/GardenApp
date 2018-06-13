@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { HttpClient, HttpHeaders} from '@angular/common/http'
+import { HttpClient } from '@angular/common/http'
 
 import { Observable } from 'rxjs/observable';
 
@@ -12,5 +12,9 @@ export class SensorService {
 
     getSensors(): Observable<Sensor[]> {
         return this.http.get<Sensor[]>('http://api.nppc.se/api/values/sensors');                  
-    }        
+    }
+    
+    getMeasure(sensorId: Number, startDate: Date, endDate:Date): Observable<Measure[]> {
+        return this.http.get<Measure[]>('http://api.nppc.se/api/values/sensor/time/' + sensorId + '?startTime=' + startDate + '&endTime=' + endDate);
+    }
 }
