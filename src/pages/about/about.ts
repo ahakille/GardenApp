@@ -13,8 +13,9 @@ import { Measure } from '../../shared/measue.model';
 export class AboutPage {
 
   sensors: Sensor[] = [];
+  measures: Measure[] = [];
   showResetBtn = false;
-  
+    
   constructor(public navCtrl: NavController, private sensorService: SensorService) { }
 
   getSensors() {
@@ -28,5 +29,13 @@ export class AboutPage {
   hideSensors() {
     this.sensors = [];
     this.showResetBtn = false;
+  }
+
+  //TODO Remove hardcoded Date parameters
+  getMeasure(sensor: Sensor, startDate = null, endDate = null) {
+    this.sensorService.getMeasure(sensor.sensorId, startDate, endDate)
+      .subscribe(res => {
+        this.measures = res;
+      });
   }
 }
