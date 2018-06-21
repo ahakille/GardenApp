@@ -5,20 +5,28 @@
 </ion-header>
 
 <ion-content >
-  <ion-card>
+   
+    
+    <ion-card>
     <ion-card-header>
       Fukt
     </ion-card-header>
     <ion-card-content>
+        <div *ngIf="!showResetBtn">
+            <button ion-button color="secondary" round  (click)="showChart()">Visa sensorer</button>      
+        </div>
       <canvas #lineCanvas></canvas>
-    </ion-card-content>
-    <ion-item>
+      </ion-card-content>
+      <ion-item>
+      <div *ngIf="showResetBtn">
       <button ion-button clear>1 dag</button>
       <button ion-button clear>3 dag</button>
       <button ion-button clear>1 vecka</button>
       <button ion-button clear>1 månad</button>
       <button ion-button clear>1 år</button>
-    </ion-item>
-  </ion-card>
+      </div>
+      </ion-item>
+    </ion-card>
+  
 
 </ion-content>
