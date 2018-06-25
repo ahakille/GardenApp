@@ -11,10 +11,10 @@ export class SensorService {
     constructor(private http: HttpClient){}
 
     getSensors(): Observable<Sensor[]> {
-        return this.http.get<Sensor[]>('http://api.nppc.se/api/values/sensors');                  
+        return this.http.get<Sensor[]>('https://api.nppc.se/api/values/sensors');                  
     }
     
     getMeasure(sensorId: Number, startDate: Date, endDate:Date): Observable<Measure[]> {
-        return this.http.get<Measure[]>('http://api.nppc.se/api/values/sensor/time/' + sensorId + '?startTime=' + startDate + '&endTime=' + endDate);
+        return this.http.get<Measure[]>('https://api.nppc.se/api/values/sensor/time/' + sensorId + '?startTime=' + startDate + '&endTime=' + endDate);
     }
 }

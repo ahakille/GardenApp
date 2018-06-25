@@ -39,12 +39,14 @@ $colors: (
   danger:     #f53d3d,
   light:      #f4f4f4,
   dark:       #222,
-  front:       #45695f
+  front:      #038d21
 );
 
 $toolbar-md-background: color($colors,front);
-
+$tabs-tab-color-active: color($colors, light);
+$tabs-md-tab-text-color: color($colors, light);
 $tabs-background: color($colors,front);
+$tabs-md-tab-icon-color: color($colors,light);
 
 // App iOS Variables
 // --------------------------------------------------
