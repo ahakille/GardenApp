@@ -1,4 +1,4 @@
-import { Component,ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Chart } from 'chart.js';
 
@@ -15,7 +15,7 @@ export class AboutPage {
   sensors: Sensor[] = [];
   measures: Measure[] = [];
   showResetBtn = false;
-    
+
   constructor(public navCtrl: NavController, private sensorService: SensorService) { }
 
   getSensors() {
@@ -23,7 +23,7 @@ export class AboutPage {
       .subscribe(res => {
         this.sensors = res;
         this.showResetBtn = true;
-      });     
+      });
   }
 
   hideSensors() {
