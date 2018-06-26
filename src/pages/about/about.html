@@ -6,24 +6,25 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <div *ngIf="!showResetBtn">
-      <button ion-button color="light" round full (click)="getSensors()">Visa sensorer</button>      
-  </div>
-  
-  <ion-list>    
-      <button ion-item *ngFor="let sensor of sensors" (click)="getMeasure(sensor)">
-        {{ sensor.sensorName }}
-      </button>
-      <ion-list>
-        <div *ngFor="let measue of measures">
-          <ion-item>{{measue.timeStamp}}</ion-item>
-          <ion-item>{{measue.sensorData}}</ion-item>                   
-        </div> 
-      </ion-list>         
-  
-  </ion-list>
-  <div *ngIf="showResetBtn">
-    <button ion-button color="light" round full (click)="hideSensors()">Dölj sensorer</button>
-  </div>  
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      Fukt
+    </ion-card-header>
+    <ion-card-content>
+      <div *ngIf="!showResetBtn">
+        <button ion-button color="secondary" round (click)="showChart()">Visa sensorer</button>
+      </div>
+      <canvas #lineCanvas></canvas>
+    </ion-card-content>
+    <ion-item>
+      <div *ngIf="showResetBtn">
+        <button ion-button clear>1 dag</button>
+        <button ion-button clear>3 dag</button>
+        <button ion-button clear>1 vecka</button>
+        <button ion-button clear>1 månad</button>
+        <button ion-button clear>1 år</button>
+      </div>
+    </ion-item>
+  </ion-card>
 </ion-content>

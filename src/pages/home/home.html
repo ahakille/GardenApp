@@ -1,32 +1,53 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Fukt</ion-title>
+    <ion-title>Garden Översikt</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content text-center padding class="content">
+    <ion-card>
 
+        <ion-card-header>
+          Fukt
+        </ion-card-header>
+      
+        <ion-card-content>
+            <ion-icon name="water" style="zoom:2.0"></ion-icon>123
+        </ion-card-content>
+      
+      </ion-card>
+      <ion-card>
 
-  <ion-card>
-    <ion-card-header>
-      Fukt
-    </ion-card-header>
-    <ion-card-content>
-      <div *ngIf="!showResetBtn">
-        <button ion-button color="secondary" round (click)="showChart()">Visa sensorer</button>
-      </div>
-      <canvas #lineCanvas></canvas>
-    </ion-card-content>
-    <ion-item>
-      <div *ngIf="showResetBtn">
-        <button ion-button clear>1 dag</button>
-        <button ion-button clear>3 dag</button>
-        <button ion-button clear>1 vecka</button>
-        <button ion-button clear>1 månad</button>
-        <button ion-button clear>1 år</button>
-      </div>
-    </ion-item>
-  </ion-card>
+          <ion-card-header>
+            Fukt
+          </ion-card-header>
+        
+          <ion-card-content>
+              <ion-icon name="water" style="zoom:2.0"></ion-icon>123
+          </ion-card-content>
+        
+        </ion-card>
+        <ion-card>
 
+            <ion-card-header>
+              Temperatur
+            </ion-card-header>
+          
+            <ion-card-content>
+                <ion-icon name="thermometer" style="zoom:2.0"></ion-icon>123
+            </ion-card-content>
+          
+          </ion-card>
+          <ion-card>
 
+              <ion-card-header>
+                Sol
+              </ion-card-header>
+            
+              <ion-card-content>
+                  <ion-icon name="sunny" style="zoom:2.0"></ion-icon>123
+              </ion-card-content>
+            
+            </ion-card>
+ 
 </ion-content>
