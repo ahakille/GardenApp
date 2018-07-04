@@ -13,6 +13,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { SensorService } from '../shared/sensor.service';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { SensorService } from '../shared/sensor.service';
     StatusBar,
     SplashScreen,
     SensorService,
+    DatePipe,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

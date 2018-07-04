@@ -1,63 +1,66 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, DateTime } from 'ionic-angular';
+import { DatePipe } from '@angular/common';
 
 
 import { SensorService } from '../../shared/sensor.service';
 import { Sensor } from '../../shared/sensor.model';
 import { Measure } from '../../shared/measue.model';
 
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-  @ViewChild('lineCanvas') lineCanvas;
-  lineChart: any;
 
-  showResetBtn = false;
   measures: Measure[] = [];
-  measures1: Measure[] = [];
+  fukt1: Measure[] = [];
+  fukt2: Measure[] = [];
+  sol: Measure[] = [];
+  temp: Measure[] = [];
   sensor: Sensor;
-  timestamp: string[] = [];
-  data: number[] = [];
-  data2: number[] = []
 
-  constructor(public navCtrl: NavController, private sensorService: SensorService) {
+
+
+
+  constructor(public navCtrl: NavController, private sensorService: SensorService, private datePipe: DatePipe) {
 
   }
 
-  getMeasure(sensor: Sensor, startDate = null, endDate = null) {
+  updateMeasure() {
+    this.sensorService.getMeasure(1, this.datePipe.transform(Date.now() - 11 * 60000, "yyyy-MM-dd HH:mm:ss"), this.datePipe.transform(Date.now(), "yyyy-MM-dd HH:mm:ss"))
+      .subscribe(res => {
+        this.fukt1 = res;
+
+      });
+    this.sensorService.getMeasure(2, this.datePipe.transform(Date.now() - 11 * 60000, "yyyy-MM-dd HH:mm:ss"), this.datePipe.transform(Date.now(), "yyyy-MM-dd HH:mm:ss"))
+      .subscribe(res => {
+        this.fukt2 = res;
+
+      });
+    this.sensorService.getMeasure(4, this.datePipe.transform(Date.now() - 11 * 60000, "yyyy-MM-dd HH:mm:ss"), this.datePipe.transform(Date.now(), "yyyy-MM-dd HH:mm:ss"))
+      .subscribe(res => {
+        this.sol = res;
+
+      });
+    this.sensorService.getMeasure(5, this.datePipe.transform(Date.now() - 11 * 60000, "yyyy-MM-dd HH:mm:ss"), this.datePipe.transform(Date.now(), "yyyy-MM-dd HH:mm:ss"))
+      .subscribe(res => {
+        this.temp = res;
+
+      });
+  };
+
+  getMeasure(sensor: Sensor, startDate, endDate) {
+    console.log(sensor)
     this.sensorService.getMeasure(sensor.sensorId, startDate, endDate)
       .subscribe(res => {
         this.measures = res;
+
       });
-  }
+    return this.measures;
+  };
 
-  getTimestamp(measures) {
-    for (let index = 0; index < measures.length; index++) {
-      this.timestamp[index] = measures[index].timeStamp;
-    }
-  }
 
-  getMeasureData(measures) {
-    this.data = [];
-    for (let index = 0; index < measures.length; index++) {
-      this.data[index] = measures[index].sensorData;
-    }
-    return this.data;
-  }
 
-  ionViewDidLoad() {
-    this.sensor = { "sensorId": 1, "sensorName": "" };
-    this.sensorService.getMeasure(1, null, null)
-      .subscribe(res => {
-        this.measures = res;
-      });
-
-    this.sensor = { "sensorId": 2, "sensorName": "" };
-    this.sensorService.getMeasure(2, null, null)
-      .subscribe(res => {
-        this.measures1 = res;
-      });
-  }
 }

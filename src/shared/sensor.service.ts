@@ -14,7 +14,7 @@ export class SensorService {
         return this.http.get<Sensor[]>('https://api.nppc.se/api/values/sensors');                  
     }
     
-    getMeasure(sensorId: Number, startDate: Date, endDate:Date): Observable<Measure[]> {
+    getMeasure(sensorId: Number, startDate: string, endDate:string): Observable<Measure[]> {
         return this.http.get<Measure[]>('https://api.nppc.se/api/values/sensor/time/' + sensorId + '?startTime=' + startDate + '&endTime=' + endDate);
     }
 }

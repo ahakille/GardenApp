@@ -5,49 +5,50 @@
 </ion-header>
 
 <ion-content text-center padding class="content">
-    <ion-card>
+  <ion-card *ngFor="let fukt of fukt1">
 
-        <ion-card-header>
-          Fukt
-        </ion-card-header>
-      
-        <ion-card-content>
-            <ion-icon name="water" style="zoom:2.0"></ion-icon>123
-        </ion-card-content>
-      
-      </ion-card>
-      <ion-card>
+    <ion-card-header>
+      Fukt 1
+    </ion-card-header>
 
-          <ion-card-header>
-            Fukt
-          </ion-card-header>
-        
-          <ion-card-content>
-              <ion-icon name="water" style="zoom:2.0"></ion-icon>123
-          </ion-card-content>
-        
-        </ion-card>
-        <ion-card>
+    <ion-card-content>
+      <ion-icon name="water" style="zoom:2.0"> {{fukt.sensorData/10}} % </ion-icon>
+    </ion-card-content>
 
-            <ion-card-header>
-              Temperatur
-            </ion-card-header>
-          
-            <ion-card-content>
-                <ion-icon name="thermometer" style="zoom:2.0"></ion-icon>123
-            </ion-card-content>
-          
-          </ion-card>
-          <ion-card>
+  </ion-card>
+  <ion-card *ngFor="let fukt of fukt2">
 
-              <ion-card-header>
-                Sol
-              </ion-card-header>
-            
-              <ion-card-content>
-                  <ion-icon name="sunny" style="zoom:2.0"></ion-icon>123
-              </ion-card-content>
-            
-            </ion-card>
- 
+    <ion-card-header>
+      Fukt 2
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-icon name="water" style="zoom:2.0"> {{fukt.sensorData/10}} % </ion-icon>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngFor="let fukt of temp">
+    <ion-card-header>
+      Temperatur
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-icon name="thermometer" style="zoom:2.0"> {{fukt.sensorData}} C</ion-icon>
+
+    </ion-card-content>
+
+  </ion-card>
+
+  <ion-card *ngFor="let fukt of sol">
+
+    <ion-card-header>
+      Sol
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-icon name="sunny" style="zoom:2.0"> {{fukt.sensorData}} </ion-icon>
+    </ion-card-content>
+
+  </ion-card>
+  <button ion-button color="secondary" round (click)="updateMeasure()">Uppdatera</button>
 </ion-content>
