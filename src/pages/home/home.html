@@ -4,7 +4,8 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content text-center padding class="content">
+<ion-content text-center padding-horizontal class="content" >
+
   <ion-card *ngFor="let fukt of fukt1">
 
     <ion-card-header>
@@ -12,7 +13,7 @@
     </ion-card-header>
 
     <ion-card-content>
-      <ion-icon name="water" style="zoom:2.0"> {{fukt.sensorData/10}} % </ion-icon>
+      <ion-icon name="water" style="zoom:2.0"> {{100-(fukt.sensorData/10)}} % </ion-icon>
     </ion-card-content>
 
   </ion-card>
@@ -23,7 +24,7 @@
     </ion-card-header>
 
     <ion-card-content>
-      <ion-icon name="water" style="zoom:2.0"> {{fukt.sensorData/10}} % </ion-icon>
+      <ion-icon name="water" style="zoom:2.0"> {{100-(fukt.sensorData/10)}} % </ion-icon>
     </ion-card-content>
   </ion-card>
 
@@ -49,6 +50,11 @@
       <ion-icon name="sunny" style="zoom:2.0"> {{fukt.sensorData}} </ion-icon>
     </ion-card-content>
 
-  </ion-card>
-  <button ion-button color="secondary" round (click)="updateMeasure()">Uppdatera</button>
+  </ion-card> 
+ <!-- <button ion-button color="secondary" round (click)="updateMeasure()">Uppdatera</button> -->
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content pullingText="Dra för att uppdatera" refreshingText="Uppdaterar..." refreshingSpinner="circles">
+          
+      </ion-refresher-content>
+</ion-refresher>
 </ion-content>

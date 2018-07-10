@@ -7,7 +7,6 @@ import { SensorService } from '../../shared/sensor.service';
 import { Sensor } from '../../shared/sensor.model';
 import { Measure } from '../../shared/measue.model';
 
-
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -21,11 +20,18 @@ export class HomePage {
   temp: Measure[] = [];
   sensor: Sensor;
 
-
-
-
   constructor(public navCtrl: NavController, private sensorService: SensorService, private datePipe: DatePipe) {
 
+  }
+
+  doRefresh(refresher) {
+
+    this.updateMeasure();
+
+    setTimeout(() => {
+      
+      refresher.complete();
+    }, 500);
   }
 
   updateMeasure() {
@@ -50,7 +56,9 @@ export class HomePage {
 
       });
   };
-
+  ionViewDidEnter(){
+    this.updateMeasure();
+   }
   getMeasure(sensor: Sensor, startDate, endDate) {
     console.log(sensor)
     this.sensorService.getMeasure(sensor.sensorId, startDate, endDate)

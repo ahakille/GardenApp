@@ -3,7 +3,12 @@ page-home {
         background-image: url('/assets/imgs/background.JPG');
         background-repeat: no-repeat;
         background-size: 100% 100%;
-        background-color: #45372E;
+        background-color: transparent !important;
+        
     }
+    .has-refresher  .scroll-content {
+        border-top: 0 !important;
+      }
+   
 }
 
