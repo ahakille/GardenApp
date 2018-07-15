@@ -12,19 +12,23 @@
       Fukt
     </ion-card-header>
     <ion-card-content>
-      <div *ngIf="!showResetBtn">
+     <!-- <div *ngIf="!showResetBtn">
         <button ion-button color="secondary" round (click)="showChart()">Visa sensorer</button>
-      </div>
+      </div> -->
       <canvas #lineCanvas></canvas>
     </ion-card-content>
-    <ion-item>
-      <div *ngIf="showResetBtn">
-        <button ion-button clear>1 dag</button>
-        <button ion-button clear>3 dag</button>
-        <button ion-button clear>1 vecka</button>
-        <button ion-button clear>1 månad</button>
-        <button ion-button clear>1 år</button>
-      </div>
-    </ion-item>
   </ion-card>
+  <ion-card>
+    <ion-card-header>
+      Temperatur
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #lineCanvas2></canvas>
+    </ion-card-content>
+  </ion-card>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingText="Dra för att uppdatera" refreshingText="Uppdaterar..." refreshingSpinner="circles">
+        
+    </ion-refresher-content>
+</ion-refresher>
 </ion-content>
